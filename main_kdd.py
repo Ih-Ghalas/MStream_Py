@@ -5,7 +5,7 @@ from river import stream, metrics, preprocessing
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-data = pd.read_csv('dataset.csv')
+data = pd.read_csv('data\kddcup99.csv')
 # getting the numerical features
 columns = data.columns
 categ_label =  ['normal.','udp_cat','private_cat','SF_cat']   
@@ -49,7 +49,7 @@ i=1
 auc = metrics.ROCAUC()
 scaler = preprocessing.Normalizer(order=2)
 
-for x, _ in stream.iter_csv('dataset.csv'):
+for x, _ in stream.iter_csv('data\kddcup99.csv'):
     numeric, categ, j, y = preprocess(x, 1 + i/1000)
 
     numeric = {k:val for k,val in enumerate(numeric)}
